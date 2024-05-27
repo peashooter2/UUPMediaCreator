@@ -42,7 +42,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v4.0.0
         with:
-          dotnet-version: "7.0.x"
+          dotnet-version: "8.0.x"
 
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2.0.0
@@ -50,7 +50,7 @@ jobs:
       - name: Build CLI utilities
         shell: pwsh
         run: |
-          msbuild /m /t:restore,cli\uupmediaconverter:publish,cli\uupdownload:publish /p:Platform=${{ matrix.architecture }} /p:RuntimeIdentifier=${{ matrix.platform }}-${{ matrix.architecture }} /p:PublishDir=${{ github.workspace }}/artifacts/${{ matrix.platform }}-${{ matrix.architecture }}/CLIs /p:PublishSingleFile=true /p:PublishTrimmed=false /p:Configuration=Release UUPMediaCreator.sln
+          msbuild /m /t:restore,cli\uupmediaconverter:publish,cli\uupdownload:publish /p:Platform=${{ matrix.architecture }} /p:RuntimeIdentifier=${{ matrix.platform }}-${{ matrix.architecture }} /p:PublishDir=${{ github.workspace }}/artifacts/${{ matrix.platform }}-${{ matrix.architecture }}/CLIs /p:PublishSingleFile=true /p:PublishTrimmed=false /p:Configuration=Debug UUPMediaCreator.sln
 
       - name: Create PDB Output Directory
         shell: pwsh
