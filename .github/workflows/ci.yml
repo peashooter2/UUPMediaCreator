@@ -46,6 +46,8 @@ jobs:
 
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2
+        with:
+         vs-prerelease: true
 
       - name: Build CLI utilities
         shell: pwsh
